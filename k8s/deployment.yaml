@@ -1,0 +1,20 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gan-inference-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gan-inference
+  template:
+    metadata:
+      labels:
+        app: gan-inference
+    spec:
+      containers:
+      - name: gan-inference-container
+        image: <PUT-THE-DOCKER-IMAGE-HERE🐋🐋> # Replace with actual Docker image
+        ports:
+        - containerPort: 8080
